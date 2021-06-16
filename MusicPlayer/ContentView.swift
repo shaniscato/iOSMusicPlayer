@@ -16,12 +16,13 @@ struct ContentView: View {
     @State var count = 1
     var body: some View {
         ZStack{
-            Color.backgroundColor
+            Color("backgroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack {
+                
                 HStack {
                     //Title
-                    Text("Music Player").font(.system(size:45)).fontWeight(.bold).foregroundColor(.primaryColor).padding(.bottom)
+                    Text("Music Player").font(.system(size:45)).fontWeight(.bold).foregroundColor(Color("primaryColor")).padding(.bottom)
                 }
                 HStack {
                     //Play previous
@@ -41,7 +42,7 @@ struct ContentView: View {
                         Image(systemName: "backward").resizable()
                         .frame(width:50, height: 40)
                             .aspectRatio(contentMode: .fit)
-                        .foregroundColor(.primaryColor)
+                        .foregroundColor(Color("primaryColor"))
                     }.padding()
                     
                     //Play current song
@@ -58,7 +59,7 @@ struct ContentView: View {
                         Image(systemName: self.playing ? "pause" : "play").resizable()
                             .frame(width:40, height: 40)
                             .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.primaryColor)
+                            .foregroundColor(Color("primaryColor"))
                     }.padding()
                     
                     //Play next
@@ -78,7 +79,7 @@ struct ContentView: View {
                         Image(systemName: "forward").resizable()
                         .frame(width:50, height: 40)
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(.primaryColor)
+                        .foregroundColor(Color("primaryColor"))
                     }.padding()
                 }
             }
