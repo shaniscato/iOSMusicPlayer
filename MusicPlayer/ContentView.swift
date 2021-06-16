@@ -26,16 +26,17 @@ struct ContentView: View {
                 HStack {
                     //Play previous
                     Button(action: {
-                        if self.count > 2 {
+                        if self.count > 3 {
                             self.count -= 1
                         }
                         else {
-                            self.count = 1
+                            self.count += 1
                         }
-                        
+                        self.audioPlayer.stop()
                         let sound = Bundle.main.path(forResource: "mysound\(self.count)", ofType: "mp3")
                         self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
                         self.audioPlayer.play()
+                        self.playing = true
                     }) {
                         Image(systemName: "backward").resizable()
                         .frame(width:50, height: 40)
@@ -62,7 +63,7 @@ struct ContentView: View {
                     
                     //Play next
                     Button(action: {
-                        if self.count < 2 {
+                        if self.count < 3 {
                             self.count += 1
                         }
                         else {
@@ -72,6 +73,7 @@ struct ContentView: View {
                         let sound = Bundle.main.path(forResource: "mysound\(self.count)", ofType: "mp3")
                         self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
                         self.audioPlayer.play()
+                        self.playing = true
                     }) {
                         Image(systemName: "forward").resizable()
                         .frame(width:50, height: 40)
